@@ -8,7 +8,9 @@
 
 [Readpoint](https://github.com/bagg8234-lab/Readpoint) 프로젝트에서 Azure Data Factory로 구현한 데이터 파이프라인을 Apache Airflow DAG로 재설계했습니다.
 
-ADF의 한계였던 **파이프라인 단위 재실행** 문제를 Airflow의 **태스크 단위 재실행**으로 개선하는 것이 목적입니다.
+ADF 운영 중 네트워크 오류로 `chapter_split` 태스크가 실패했을 때, **파이프라인 전체를 재실행**해야 하는 문제가 반복되었습니다. 앞 단계 작업이 모두 낭비되는 구조였고, 이를 개선하기 위해 **태스크 단위 재실행**이 가능한 Airflow로 전환을 결정했습니다.
+
+![ADF 오류 화면](docs/adf_airflow.png)
 
 | 항목 | ADF | Airflow |
 |---|---|---|
