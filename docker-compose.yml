@@ -1,0 +1,24 @@
+services:
+  airflow:
+    image: apache/airflow:2.10.5
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=SequentialExecutor
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=sqlite:////opt/airflow/airflow.db
+      - AZURE_STORAGE_ACCOUNT_NAME=${AZURE_STORAGE_ACCOUNT_NAME}
+      - AZURE_STORAGE_ACCOUNT_KEY=${AZURE_STORAGE_ACCOUNT_KEY}
+      - AZURE_FUNCTIONS_URL=${AZURE_FUNCTIONS_URL}
+      - AZURE_FUNCTIONS_KEY=${AZURE_FUNCTIONS_KEY}
+      - AZURE_FUNCTIONS_URL_META=${AZURE_FUNCTIONS_URL_META}
+      - AZURE_FUNCTIONS_KEY_META=${AZURE_FUNCTIONS_KEY_META}
+      - PG_HOST=${PG_HOST}
+      - PG_DATABASE=${PG_DATABASE}
+      - PG_USER=${PG_USER}
+      - PG_PASSWORD=${PG_PASSWORD}
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+      - ./airflow.db:/opt/airflow/airflow.db
+    ports:
+      - "8080:8080"
+    command: standalone
