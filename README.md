@@ -10,7 +10,7 @@
 
 ADF 운영 중 네트워크 오류로 `chapter_split` 태스크가 실패했을 때, **파이프라인 전체를 재실행**해야 하는 문제가 반복되었습니다. 앞 단계 작업이 모두 낭비되는 구조였고, 이를 개선하기 위해 **태스크 단위 재실행**이 가능한 Airflow로 전환을 결정했습니다.
 
-![ADF 오류 화면](docs/adf_airflow.png)
+![ADF 오류 화면](docs/adf_openai__extract_error.png)
 
 | 항목 | ADF | Airflow |
 |---|---|---|
